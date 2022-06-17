@@ -46,8 +46,18 @@ def add_product():
     db.session.commit()
 
     return product_schema.jsonify(new_product)
+#get All Products
+@app.route('/product', methods=['Get'])
+def get_products():
+  all_products = Product.query.all()
+  result = products_schema.dump(all_products)
+  return jsonify(result)
 
-    return product_schema
+@app.route('/product'/ , methods=['Get'])
+def get_products():
+  all_products = Product.query.all()
+  result = products_schema.dump(all_products)
+  return jsonify(result)
 
 #Create a Product
 if __name__ == '__main__':
